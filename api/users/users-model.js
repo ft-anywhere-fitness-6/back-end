@@ -25,7 +25,7 @@ function findById(user_id) {
 
 
 async function add({ username, password, role_name }) { 
-  let created_user_id
+  let user;
   await db.transaction(async trx => {
     let role_id_to_use
     const [role] = await trx('roles').where('role_name', role_name)
@@ -35,10 +35,11 @@ async function add({ username, password, role_name }) {
       const [role_id] = await trx('roles').insert({ role_name: role_name })
       role_id_to_use = role_id
     }
-    const [user_id] = await trx('users').insert({ username: username, password: password, role_id: role_id_to_use })
-    created_user_id = user_id
+      [user] = await trx('users')
+        .insert({ username: username, password: password, role_id: role_id_to_use } , ["user_id", "username"])
+   
   })
-  return findById(created_user_id)
+  return user
 }
 
 module.exports = {

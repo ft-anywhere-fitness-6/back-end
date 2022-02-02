@@ -8,7 +8,10 @@ const { BCRYPT_ROUNDS } = require('../secret')
 
 router.post("/register", validateRoleName, (req, res, next) => {
 
-  const { username, password } =req.body
+  const { username, password
+  
+  
+  } =req.body
   const { role_name } = req
   const hash = bcrypt.hashSync(password, BCRYPT_ROUNDS)
   User.add({username, password: hash, role_name})
