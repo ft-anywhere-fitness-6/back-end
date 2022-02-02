@@ -146,8 +146,9 @@ where u.user_id = 2
     return foundClass
 }
 
-async function add(course) {
-    return null
+async function add( newClass ) {
+    const class_id = await db('class').insert( newClass );
+    return  Number(class_id) 
   }
 
 
