@@ -10,6 +10,9 @@ exports.up = function(knex) {
         classes.time('start_time')
         classes.date('class_date')
         classes.integer('class_size')
+        classes.integer('class_attendees').notNullable()
+        .references('user_id')
+        .inTable('users')
     })
 };
 
