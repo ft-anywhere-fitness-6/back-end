@@ -19,7 +19,7 @@ async function findAll() {
         .select('cs.class_id')
         .count('cs.class_attendee_id', { as: 'number_registered' })
         .groupBy('cs.class_id')  
-c
+
     let result = classes.map((cl) => ({
         ...cl,
         ...attendees.find((reg) => reg.class_id === cl.class_id),
