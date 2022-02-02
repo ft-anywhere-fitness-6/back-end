@@ -8,7 +8,8 @@ exports.seed = function (knex) {
       class_location: 'Central Park',
       start_time: '08:00:00',
       class_date: '2021-11-17',
-      class_size: 30          
+      class_size: 30,
+      user_id: 2         
     },
     {
       class_name: 'Boxing Basics',
@@ -18,7 +19,8 @@ exports.seed = function (knex) {
       class_location: 'YMCA',
       start_time: '09:00:00',
       class_date: '2021-12-07',
-      class_size: 30      
+      class_size: 30,
+      user_id: 3      
     },
     {
       class_name: 'Sunday Spinning',
@@ -28,7 +30,8 @@ exports.seed = function (knex) {
       class_location: 'Gym Z',
       start_time: '19:00:00',
       class_date: '2021-11-17',
-      class_size: 20      
+      class_size: 20,
+      user_id: 2      
     },
     {
       class_name: 'Water Aerobics',
@@ -38,7 +41,8 @@ exports.seed = function (knex) {
       class_location: 'Community Pool',
       start_time: '16:45:00',
       class_date: '2022-03-17',
-      class_size: 20      
+      class_size: 20,
+      user_id: 3      
     },
     {
       class_name: 'Bikram Yoga',
@@ -48,7 +52,8 @@ exports.seed = function (knex) {
       class_location: 'Central Park',
       start_time: '18:00:00',
       class_date: '2021-11-17',
-      class_size: 20        
+      class_size: 20,
+      user_id: 3        
     },    
   ]);
 };
