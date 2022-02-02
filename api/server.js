@@ -6,6 +6,7 @@ const cors = require('cors')
 
 const authRouter = require("./auth/auth-router.js");
 const usersRouter = require("./users/users-router.js");
+const classesRouter = require("./class/class-router");
 
 // function getAllUsers() { return db('users') }
 // async function insertUser(user) {
@@ -30,6 +31,7 @@ server.use(cors())
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", usersRouter);
+server.use("/api/classes", classesRouter);
 
 server.get('/', (req, res) => {
   res.send(`<h1> Hello, Anywhere Fitness Mates </h1>`)
