@@ -263,3 +263,57 @@ _What you receive:_
   "number_registered": 2
 }
 ```
+
+### [GET] /api/classes/:user_id/attending
+
+**_RESTRICTED ENDPOINT_**
+
+- Get an array of classes a specific user is registered for
+  - _requires valid token in authorization header to access_
+- _(example uses "4" for **:user_id** in URL)_
+  _What you receive:_
+
+```json
+[
+    {
+        "class_id": 1,
+        "Name": "Morning Zen",
+        "Type": "yoga",
+        "Start time": "08:00:00",
+        "Duration": "1 hour",
+        "Intensity level": "beginner",
+        "Location": "Central Park",
+        "Max class size": 30
+    },
+    {
+        "class_id": 2,
+        "Name": "Boxing Basics",
+        "Type": "boxing",
+        "Start time": "09:00:00",
+        "Duration": "45 min",
+        "Intensity level": "intermediate",
+        "Location": "YMCA",
+        "Max class size": 30
+    },
+    {
+        "class_id": 3,
+        "Name": "Sunday Spinning",
+        "Type": "cycling",
+        "Start time": "19:00:00",
+        "Duration": "1.5 hours",
+        "Intensity level": "advanced",
+        "Location": "Gym Z",
+        "Max class size": 20
+    },
+    {
+        "class_id": 4,
+        "Name": "Water Aerobics",
+        "Type": "swimming",
+        "Start time": "16:45:00",
+        "Duration": "2 hours",
+        "Intensity level": "advanced",
+        "Location": "Community Pool",
+        "Max class size": 20
+    }
+]
+```

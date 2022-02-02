@@ -19,7 +19,7 @@ async function findAll() {
         .select('cs.class_id')
         .count('cs.class_attendee_id', { as: 'number_registered' })
         .groupBy('cs.class_id')  
-
+c
     let result = classes.map((cl) => ({
         ...cl,
         ...attendees.find((reg) => reg.class_id === cl.class_id),
@@ -73,18 +73,41 @@ async function findById(class_id) {
 }
 
 async function findAttending(user_id) {
+/*
+    select  *
+    from classes_attendees as cs
+    join class as c
+        on cs.class_id = c.class_id	
+    join users as u
+        on cs.user_id = u.user_id	
+    where u.user_id = 4
+    */
   
-  return null;
-}
+    const rows = await db('classes_attendees as cs')
+    .join('class as c', 'cs.class_id', 'c.class_id')
+    .join('users as u', 'cs.user_id', 'u.user_id')
+    .select (
+        'c.class_id',
+        'class_name as Name', 
+        'class_type as Type', 
+        'start_time as Start time', 
+        'class_duration as Duration', 
+        'class_intensity as Intensity level', 
+        'class_location as Location',     
+        'class_size as Max class size',                      
+    )
+    .where('u.user_id', user_id);
+
+    return rows
+  }
+
+async function add(course) {
+    return null
+  }
 
 async function findTeaching(user_id) {
-  
-  return null;
-}
-
-async function add(clss) {
-  
-  return null;
+    
+    return null
 }
 
 async function signup({ user_id, class_id }) {
@@ -103,10 +126,10 @@ async function removeClass(class_id){
 module.exports = {
   findAll,
   findById,
-  findAttending,
   add,
+  findAttending,  
   findTeaching,
   signup,
   update,
- 
+    
 };
