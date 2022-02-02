@@ -9,6 +9,7 @@ exports.up = function(knex) {
         classes.string('class_location').notNullable()
         classes.time('start_time')
         classes.date('class_date')
+        classes.integer('class_size')
     })
 };
 
