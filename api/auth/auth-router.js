@@ -45,5 +45,4 @@ function builderToken(user) {
   return token
 }
 
-
 module.exports = router;
