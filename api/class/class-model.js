@@ -147,11 +147,9 @@ where u.user_id = 2
 }
 
 async function add( newClass ) {
-    const class_id = await db('class').insert( newClass );
-    return  Number(class_id) 
+    const result = await db('class').insert( newClass, ["class_name"] );
+    return result
   }
-
-
 
 async function signup({ user_id, class_id }) {
   

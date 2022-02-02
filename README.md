@@ -304,6 +304,31 @@ _What you receive:_
 ]
 ```
 
+### [POST] /api/classes/add
+
+** As a instructor you can create virtual punch pass categories for each type of group fitness class they offer   **
+
+**_RESTRICTED ENDPOINT_**
+
+- Add information for a new class
+  - _requires valid token in authorization header to access_
+
+_What you send:_
+
+```json
+{
+      class_name: 'Some Sports',
+      class_type: "yoga",
+      class_duration: '1 hour',
+      class_intensity: 'beginner',
+      class_location: 'Central Park',
+      start_time: '08:00:00',
+      class_date: '2021-11-17',
+      class_size: 30,
+      user_id: 2         
+    },
+```
+
 ### [GET] /api/classes/:user_id/attending
 
 ** As a client (using user_id) to find what classes you are attending  **
@@ -359,3 +384,4 @@ _What you receive:_
     }
 ]
 ```
+

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
+import Register from './components/Register';
 import Data from './components/DataCenter';
 
 function App() {
@@ -12,6 +13,9 @@ function App() {
     <Router>
       <div className="App">
         <ul>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
           <li>
             <Link to="/login">Login</Link>
           </li>
@@ -30,6 +34,7 @@ function App() {
         </ul>
         <Switch>
           <PrivateRoute exact path="/protected" component={ Data } />          
+          <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/" component={Login} />    
         </Switch>
