@@ -1,21 +1,7 @@
 const db = require('../data/db-config');
 
 async function findAll() {  
-/*
-SELECT 
-    class_name as Name, 
-    class_type as Type, 
-    start_time, 
-    class_duration, 
-    class_intensity, 
-    class_location, 
-    
-    class_size as "Max class size",
-    
-FROM class as c
-JOIN users as u
-  ON u.user_id = c.user_id
-*/
+
     const classes = await db('class as c')
         .join('users as u', 'u.user_id', 'c.user_id')
         .select (
@@ -49,9 +35,41 @@ JOIN users as u
 }
 
 async function findById(class_id) {
-  
 
-  return null;
+    const foundClass = await db('class as c')
+        .join('users as u', 'u.user_id', 'c.user_id')
+        .select (
+            'c.class_id',
+            'class_name as Name', 
+            'class_type as Type', 
+            'class_date as Date', 
+            'start_time as Start time', 
+            'class_duration as Duration', 
+            'class_intensity as Intensity level',
+            'u.username as instructor', 
+            'class_location as Location',     
+            'class_size as Max class size'               
+        )
+        .where('c.class_id', class_id)
+
+    const attendees = await db('classes_attendees as cs')
+        .select('cs.class_id')
+        .count('cs.class_attendee_id', { as: 'number_registered' })
+        .groupBy('cs.class_id') 
+        .where('cs.class_id', class_id)
+
+    let result = foundClass.map((cl) => ({
+        ...cl,
+        ...attendees.find((reg) => reg.class_id === cl.class_id),
+          }));    
+
+    result.forEach((cl) =>
+        cl.number_registered
+        ? (cl.number_registered = parseInt(cl.number_registered))
+        : (cl.number_registered = 0)
+        )    
+
+    return result[0]
 }
 
 async function findAttending(user_id) {
