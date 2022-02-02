@@ -151,10 +151,12 @@ async function add( newClass ) {
     return result
   }
 
-async function signup({ user_id, class_id }) {
+  async function signup({ user_id, class_id }) {
+    await db('classes_students').insert({ student_id: user_id, class_id });
+    const signup = await findById(class_id);
+    return signup;
+  }
   
-  return null;
-}
 
 async function update(class_id, changes) {
   return null
