@@ -30,7 +30,14 @@ router.get('/:class_id', async (req, res, next) => {
     }
   });
 
-  
+  router.get('/:user_id/teaching', async (req, res, next) => {
+    try {
+      const classes = await Classes.findTeaching(req.params.user_id);
+      res.status(200).json(classes);
+    } catch (err) {
+      next(err);
+    }
+  });
 
 
 module.exports = router;
