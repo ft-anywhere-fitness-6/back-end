@@ -159,7 +159,9 @@ async function add( newClass ) {
   
 
 async function update(class_id, changes) {
-  return null
+  return db('class')
+  .where({ class_id })
+  .update(changes, '*');
 }
 
 async function removeClass(class_id){

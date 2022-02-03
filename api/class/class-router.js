@@ -89,4 +89,13 @@ router.get('/:user_id/attending', async (req, res, next) => {
     .catch(next)
   })
 
+  router.put('/:user_id', (req, res, next) => {
+    Classes.update(req.params.user_id, req.body)
+      .then(classes => {
+        res.status(200).json(classes);
+      })
+      .catch(err => {
+        next(err)
+      })
+  })
 module.exports = router;
