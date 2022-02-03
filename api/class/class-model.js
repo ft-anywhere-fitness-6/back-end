@@ -163,7 +163,7 @@ async function update(class_id, changes) {
 }
 
 async function removeClass(class_id){
-  return null
+  return db('class').where({ class_id }).del()
 }
 
 module.exports = {
@@ -174,5 +174,5 @@ module.exports = {
   findTeaching,
   signup,
   update,
-    
+  removeClass
 };

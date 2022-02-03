@@ -77,5 +77,16 @@ router.get('/:user_id/attending', async (req, res, next) => {
     }
   });
 
+  router.delete('/:user_id', (req, res, next) => {
+    Classes.removeClass(req.params.user_id)
+    .then(count => {
+      if (count > 0) {
+        res.status(204).end()
+      } else {
+        res.status(404).json({ message:'Not found' })
+      }
+    })
+    .catch(next)
+  })
 
 module.exports = router;
