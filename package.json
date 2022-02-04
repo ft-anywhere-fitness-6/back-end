@@ -4,6 +4,7 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
+    "heroku-postbuild": "cd client && npm i && npm run start",
     "migrate:dev": "knex migrate:latest",
     "rollback:dev": "knex migrate:rollback",
     "seed:dev": "knex seed:run",
@@ -13,7 +14,7 @@
     "database:prod": "heroku pg:psql -a fitness-06",
     "seed:prod": "heroku run knex seed:run -a fitness-06",
     "resetdb:prod": "npm run rollback:prod && npm run migrate:prod && npm run seed:prod",
-    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",   
     "deploy": "git push heroku main"
   },
   "engines": {
