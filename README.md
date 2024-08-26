@@ -8,7 +8,7 @@ Hello Build Weeks team- welcome to your project channel!
 
 # <p align="center">Anywhere Fitness API</p>
 
-## <p align="center"> https://fitness-06.herokuapp.com </p>
+## <p align="center"> https://ft-anywhere-fitness-6-0f101cd9a63d.herokuapp.com </p>
 
 ## <p align="center">--- REGISTER / LOGIN / USERS -----</p>
 
